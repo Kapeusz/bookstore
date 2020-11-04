@@ -7,6 +7,8 @@ defmodule Bookstore.Writers.Author do
     field :first_name, :string
     field :last_name, :string
 
+    has_many :books, Bookstore.Inventory.Book
+
     timestamps()
   end
 

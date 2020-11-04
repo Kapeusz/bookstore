@@ -12,6 +12,9 @@ defmodule Bookstore.Inventory.Book do
     field :published_on, :date
     field :title, :string
 
+    # belongs_to: category, Bookstore.Genres.Category
+    # belongs_to: author, Bookstore.Writers.Author
+
     timestamps()
   end
 
@@ -19,6 +22,6 @@ defmodule Bookstore.Inventory.Book do
   def changeset(book, attrs) do
     book
     |> cast(attrs, [:author_id, :category_id, :isbn, :title, :description, :published_on, :original_price, :image_url])
-    |> validate_required([:author_id, :category_id, :isbn, :title, :description, :published_on, :original_price, :image_url])
+    |> validate_required([:isbn, :title, :description, :published_on, :original_price, :image_url])
   end
 end

@@ -2,8 +2,12 @@ defmodule Bookstore.Genres.Category do
   use Ecto.Schema
   import Ecto.Changeset
 
+  import Ecto.Query
+
   schema "categories" do
     field :name, :string
+
+    has_many :books, Bookstore.Inventory.Book
 
     timestamps()
   end
@@ -13,5 +17,9 @@ defmodule Bookstore.Genres.Category do
     category
     |> cast(attrs, [:name])
     |> validate_required([:name])
+  end
+
+  def alphabetical(query) do
+    from c in query, order_by: c.name
   end
 end

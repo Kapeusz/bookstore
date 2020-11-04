@@ -3,6 +3,15 @@ defmodule BookstoreWeb.BookController do
 
   alias Bookstore.Inventory
   alias Bookstore.Inventory.Book
+  alias Bookstore.Genres
+  alias Bookstore.Genres.Category
+
+  plug :load_categories when action in [:new, :create, :edit, :update]
+
+
+  defp load_categories(conn, _) do
+    assign(conn, :categories, Bookstore.Genres.list_alphabetical_categories())
+  end
 
   def index(conn, _params) do
     books = Inventory.list_books()
