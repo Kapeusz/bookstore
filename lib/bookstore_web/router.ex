@@ -17,6 +17,9 @@ defmodule BookstoreWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/books", BookController
+    resources "/categories", CategoryController
+    resources "/authors", AuthorController
   end
 
   # Other scopes may use custom stacks.
