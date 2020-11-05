@@ -26,6 +26,22 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Config Amazon S3 Storage
+config :waffle,
+  storage: Waffle.Storage.S3,
+  bucket: "bookstoreelixir",
+  virtual_host: true
+
+  config :ex_aws,
+  access_key_id: "AKIAJ3B6NACHXLSQPQRA",
+  secret_access_key: "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",
+  region: "eu-central-1",
+  s3: [
+    scheme: "https://",
+    host: "s3.eu-central-1.amazonaws.com",
+    region: "eu-central-1"
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

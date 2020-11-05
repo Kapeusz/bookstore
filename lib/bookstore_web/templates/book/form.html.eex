@@ -1,13 +1,13 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
 
-  <%= label f, :author_id %>
-  <%= number_input f, :author_id %>
-  <%= error_tag f, :author_id %>
+  <%= label f, :author_id, "Author"%>
+  <%= select f, :author_id, author_select_options(@authors),
+      prompt: "Choose Author" %>
 
   <%= label f, :category_id, "Category"%>
   <%= select f, :category_id, category_select_options(@categories),
@@ -26,7 +26,12 @@
   <%= error_tag f, :description %>
 
   <%= label f, :published_on %>
-  <%= date_select f, :published_on %>
+  <%= date_select f, :published_on, builder: fn b -> %>
+    <%= b.(:day, prompt: "Date") %>
+    <%= b.(:month, prompt: "Month") %>
+    <%= b.(:year, prompt: "Year") %>
+  <% end %>
+
   <%= error_tag f, :published_on %>
 
   <%= label f, :original_price %>
@@ -34,7 +39,7 @@
   <%= error_tag f, :original_price %>
 
   <%= label f, :image_url %>
-  <%= text_input f, :image_url %>
+  <%= file_input f, :image_url %>
   <%= error_tag f, :image_url %>
 
   <div>

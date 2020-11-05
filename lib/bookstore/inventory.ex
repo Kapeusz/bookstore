@@ -18,7 +18,10 @@ defmodule Bookstore.Inventory do
 
   """
   def list_books do
-    Repo.all(Book)
+    Book
+    |> preload(:category)
+    |> preload(:author)
+    |> Repo.all()
   end
 
   @doc """
@@ -35,7 +38,12 @@ defmodule Bookstore.Inventory do
       ** (Ecto.NoResultsError)
 
   """
-  def get_book!(id), do: Repo.get!(Book, id)
+  def get_book!(id) do
+    Book
+    |> Repo.get!(id)
+    |> Repo.preload(:category)
+    |> Repo.preload(:author)
+  end
 
   @doc """
   Creates a book.
@@ -101,4 +109,5 @@ defmodule Bookstore.Inventory do
   def change_book(%Book{} = book, attrs \\ %{}) do
     Book.changeset(book, attrs)
   end
+
 end

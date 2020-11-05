@@ -4,12 +4,12 @@
 
   <li>
     <strong>Author:</strong>
-    <%= @book.author_id %>
+    <%= @book.author.first_name%>
   </li>
 
   <li>
     <strong>Category:</strong>
-    <%= @book.category_id %>
+    <%= @book.category.name %>
   </li>
 
   <li>
@@ -38,8 +38,8 @@
   </li>
 
   <li>
-    <strong>Image url:</strong>
-    <%= @book.image_url %>
+    <strong>Image:</strong>
+    <%= book_img(@book, :original) %>
   </li>
 
 </ul>

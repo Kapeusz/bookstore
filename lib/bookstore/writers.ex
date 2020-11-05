@@ -4,6 +4,7 @@ defmodule Bookstore.Writers do
   """
 
   import Ecto.Query, warn: false
+
   alias Bookstore.Repo
 
   alias Bookstore.Writers.Author
@@ -100,5 +101,10 @@ defmodule Bookstore.Writers do
   """
   def change_author(%Author{} = author, attrs \\ %{}) do
     Author.changeset(author, attrs)
+  end
+
+  def list_alphabetical_authors do Author
+    |> Author.alphabetical()
+    |> Repo.all()
   end
 end

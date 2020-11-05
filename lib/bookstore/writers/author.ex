@@ -1,6 +1,8 @@
 defmodule Bookstore.Writers.Author do
   use Ecto.Schema
   import Ecto.Changeset
+  import CustomSQLFunctions
+  import Ecto.Query
 
   schema "authors" do
     field :biography, :string
@@ -17,5 +19,12 @@ defmodule Bookstore.Writers.Author do
     author
     |> cast(attrs, [:first_name, :last_name, :biography])
     |> validate_required([:first_name, :last_name, :biography])
+  end
+
+  def alphabetical(query) do
+    from a in query,
+    select: %{id: a.id, name: concat(a.first_name, ' ', a.last_name)},
+    distinct: a.first_name,
+    order_by: a.first_name
   end
 end

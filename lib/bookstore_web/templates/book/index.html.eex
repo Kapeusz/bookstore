@@ -18,14 +18,14 @@
   <tbody>
 <%= for book <- @books do %>
     <tr>
-      <td><%= book.author_id %></td>
-      <td><%= book.category_id %></td>
+      <td><%= book.author.last_name %></td>
+      <td><%= book.category.name%></td>
       <td><%= book.isbn %></td>
       <td><%= book.title %></td>
       <td><%= book.description %></td>
       <td><%= book.published_on %></td>
       <td><%= book.original_price %></td>
-      <td><%= book.image_url %></td>
+      <td><%= book_img(book, :thumbnail) %></td>
 
       <td>
         <span><%= link "Show", to: Routes.book_path(@conn, :show, book) %></span>
