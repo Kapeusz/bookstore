@@ -5,25 +5,27 @@
     <tr>
       <th>Author</th>
       <th>Category</th>
-      <th>Isbn</th>
+     <!-- <th>Isbn</th>-->
       <th>Title</th>
-      <th>Description</th>
-      <th>Published on</th>
-      <th>Original price</th>
-      <th>Image url</th>
+     <!-- <th>Description</th>
+      <th>Published on</th>-->
+      <th>Price</th>
+      <th>Image</th>
 
       <th></th>
     </tr>
   </thead>
   <tbody>
+
 <%= for book <- @books do %>
     <tr>
-      <td><%= book.author.last_name %></td>
-      <td><%= book.category.name%></td>
-      <td><%= book.isbn %></td>
+      <% fullname = book.author.first_name <> " " <> book.author.last_name %>
+      <td><%= fullname %></td>
+      <td><%= book.category.name %></td>
+      <!--<td><%= book.isbn %></td>-->
       <td><%= book.title %></td>
-      <td><%= book.description %></td>
-      <td><%= book.published_on %></td>
+      <!-- <td><%= book.description %></td>
+      <td><%= book.published_on %></td>-->
       <td><%= book.original_price %></td>
       <td><%= book_img(book, :thumbnail) %></td>
 

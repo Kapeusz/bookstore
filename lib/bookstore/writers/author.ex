@@ -23,8 +23,7 @@ defmodule Bookstore.Writers.Author do
 
   def alphabetical(query) do
     from a in query,
-    select: %{id: a.id, name: concat(a.first_name, ' ', a.last_name)},
-    distinct: a.first_name,
-    order_by: a.first_name
+    select: %{id: a.id, name: concat(a.last_name, ' ', a.first_name)},
+    order_by: a.last_name
   end
 end

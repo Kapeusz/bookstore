@@ -5,6 +5,8 @@ defmodule BookstoreWeb.Uploaders.ImageUploader do
   @versions [:original, :thumbnail]
   @acl :public_read
 
+  @extension_whitelist ~w(.jpg .jpeg .gif .png)
+
   def transform(:thumbnail, _file_post) do
     {:convert, "-resize 50%"}
   end
@@ -19,12 +21,8 @@ defmodule BookstoreWeb.Uploaders.ImageUploader do
   end
 
   def validate({file, _post}) do
-    file_extension =
-      file.file_name
-      |> Path.extname()
-      |> String.downcase()
-
-    Enum.member?([".png"], file_extension)
+    file_extension = file.file_name |> Path.extname() |> String.downcase()
+    Enum.member?(@extension_whitelist, file_extension)
   end
 
   def s3_object_headers(_version, {file, _post}) do

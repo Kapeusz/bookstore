@@ -110,4 +110,9 @@ defmodule Bookstore.Inventory do
     Book.changeset(book, attrs)
   end
 
+  def display_author_full_name do
+    Book
+    |> Book.get_author_full_name()
+    |> Repo.all()
+  end
 end

@@ -9,6 +9,8 @@ defmodule Bookstore.Writers do
 
   alias Bookstore.Writers.Author
 
+  alias Bookstore.Inventory.Book
+
   @doc """
   Returns the list of authors.
 
@@ -107,4 +109,9 @@ defmodule Bookstore.Writers do
     |> Author.alphabetical()
     |> Repo.all()
   end
+
+  # def display_author_full_name do Author
+  #   |> Author.get_author_full_name()
+  #   |> Repo.all()
+  # end
 end

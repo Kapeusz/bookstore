@@ -33,8 +33,8 @@ config :waffle,
   virtual_host: true
 
   config :ex_aws,
-  access_key_id: "AKIAJ3B6NACHXLSQPQRA",
-  secret_access_key: "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",
+  access_key_id: "AKIAJSN3PPMVNGG3IV6Q",
+  secret_access_key: "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",
   region: "eu-central-1",
   s3: [
     scheme: "https://",

@@ -1,6 +1,7 @@
 defmodule BookstoreWeb.BookController do
   use BookstoreWeb, :controller
 
+  alias Bookstore.Repo
   alias Bookstore.Inventory
   alias Bookstore.Inventory.Book
   alias Bookstore.Genres
@@ -10,6 +11,7 @@ defmodule BookstoreWeb.BookController do
 
   plug :load_categories when action in [:new, :create, :edit, :update]
   plug :load_authors when action in [:new, :create, :edit, :update]
+  # plug :load_author_full_name when action in [:index, :show]
 
   defp load_categories(conn, _) do
     assign(conn, :categories, Bookstore.Genres.list_alphabetical_categories())
@@ -19,8 +21,13 @@ defmodule BookstoreWeb.BookController do
     assign(conn, :authors, Bookstore.Writers.list_alphabetical_authors())
   end
 
+  # defp load_author_full_name(conn, _) do
+  #   assign(conn, :books, Bookstore.Inventory.display_author_full_name())
+  # end
+
   def index(conn, _params) do
     books = Inventory.list_books()
+    # author_full_name = Bookstore.Inventory.display_author_full_name()
     render(conn, "index.html", books: books)
   end
 
