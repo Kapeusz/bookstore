@@ -1,6 +1,8 @@
 defmodule BookstoreWeb.BookView do
   use BookstoreWeb, :view
   alias BookstoreWeb.Uploaders.ImageUploader
+  alias Bookstore.Writers
+  alias Bookstore.Writers.Author
 
   def category_select_options(categories) do
     for category <- categories, do: {category.name, category.id}
@@ -15,4 +17,11 @@ defmodule BookstoreWeb.BookView do
     |> ImageUploader.url(version)
     |> img_tag()
   end
+
+  def full_name(%Writers.Author{first_name: first_name, last_name: last_name}) do
+    [first_name, last_name]
+    |> Enum.reject(&(&1 == ""))
+    |> Enum.join(" ")
+  end
+
 end

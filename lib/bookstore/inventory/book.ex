@@ -27,11 +27,15 @@ defmodule Bookstore.Inventory.Book do
     |> cast_attachments(attrs, [:image_url])
   end
 
-  def get_author_full_name(author) do
-    from b in "books",
-    join: a in "authors",
-    on: b.author_id == a.id,
-    where: a.id == ^author,
-    select: %{id: a.id, name: concat(a.first_name, ' ', a.last_name)}
+  # def get_author_full_name(author) do
+  #   from b in "books",
+  #   join: a in "authors",
+  #   on: b.author_id == a.id,
+  #   where: a.id == ^author,
+  #   select: %{id: a.id, name: concat(a.first_name, ' ', a.last_name)}
+  # end
+
+  def author_full_name(author) do
+    from(b in Book, preload: [:authors])  |> Repo.all()
   end
 end

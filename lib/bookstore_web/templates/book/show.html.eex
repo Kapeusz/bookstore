@@ -1,13 +1,10 @@
-<% fullname = @book.author.first_name <> " " <> @book.author.last_name %>
 <h1><%= @book.title %></h1>
 
 <ul>
 
   <li>
     <strong>Author:</strong>
-   <%= assigns[:author_full_name] %>
-    <%= fullname %>
-  </li>
+    <%= full_name(@book.author) %>
 
   <li>
     <strong>Category:</strong>
