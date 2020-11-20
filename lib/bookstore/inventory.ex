@@ -5,7 +5,8 @@ defmodule Bookstore.Inventory do
 
   import Ecto.Query, warn: false
   alias Bookstore.Repo
-
+  alias Bookstore.Genres
+  alias Bookstore.Genres.Category
   alias Bookstore.Inventory.Book
 
   @doc """
@@ -114,5 +115,10 @@ defmodule Bookstore.Inventory do
     Book
     |> Book.get_author_full_name()
     |> Repo.all()
+  end
+
+  def get_category_books(name) do
+    list_books()
+    |> Enum.filter(fn(book) -> book.category.name == name end)
   end
 end

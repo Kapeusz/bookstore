@@ -19,7 +19,6 @@
 
 <%= for book <- @books do %>
     <tr>
-      <% fullname = book.author.first_name <> " " <> book.author.last_name %>
       <td><%= full_name(book.author) %></td>
       <td><%= book.category.name %></td>
       <!--<td><%= book.isbn %></td>-->

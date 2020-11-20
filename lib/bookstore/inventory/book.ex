@@ -5,6 +5,8 @@ defmodule Bookstore.Inventory.Book do
   import Ecto.Query
   use Waffle.Ecto.Schema
 
+  alias Bookstore.Repo
+
   schema "books" do
     field :description, :string
     field :image_url, BookstoreWeb.Uploaders.ImageUploader.Type
@@ -37,5 +39,14 @@ defmodule Bookstore.Inventory.Book do
 
   def author_full_name(author) do
     from(b in Book, preload: [:authors])  |> Repo.all()
+  end
+
+  def books_by_category(name) do
+    from(b in Bookstore.Inventory.Book,
+    join: c in assoc(b, :category),
+    join: a in assoc(b, :author),
+    where: fragment("LOWER(?)", c.name) == ^name)
+    |> Repo.all()
+    |> Repo.preload(:author)
   end
 end

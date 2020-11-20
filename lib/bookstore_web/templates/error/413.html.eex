@@ -1,0 +1,2 @@
+<h4>The selected file exceed the maximum allowed file size.  Please select smaller file and try again.</h4>
+<%= link "Go back", to: Routes.book_path(@conn, :new) %>

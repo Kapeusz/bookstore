@@ -11,7 +11,7 @@
 # and so on) as they will fail if something goes wrong.
 
 # alias Bookstore.Genres
-# for category <- ~w(Action Drama Romance Comedy Sci-fi)
+# for category <- ~w(Architecture Art Beauty Health Biography Business Classics Comics Cooking Fantasy Dictionaries History Politics Horror Kids Law Economics Fiction Lifestyle Music Poetry Psychology Romance Science Science-Fiction Sociology Travel)
 #  do Genres.create_category!(category)
 # end
 

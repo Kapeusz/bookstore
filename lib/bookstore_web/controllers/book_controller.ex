@@ -21,13 +21,8 @@ defmodule BookstoreWeb.BookController do
     assign(conn, :authors, Bookstore.Writers.list_alphabetical_authors())
   end
 
-  # defp load_author_full_name(conn, _) do
-  #   assign(conn, :books, Bookstore.Inventory.display_author_full_name())
-  # end
-
   def index(conn, _params) do
     books = Inventory.list_books()
-    # author_full_name = Bookstore.Inventory.display_author_full_name()
     render(conn, "index.html", books: books)
   end
 

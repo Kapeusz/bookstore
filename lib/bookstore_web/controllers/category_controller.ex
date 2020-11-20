@@ -1,6 +1,7 @@
 defmodule BookstoreWeb.CategoryController do
   use BookstoreWeb, :controller
-
+  alias Bookstore.Inventory
+  alias Bookstore.Inventory.Book
   alias Bookstore.Genres
   alias Bookstore.Genres.Category
 
@@ -29,6 +30,15 @@ defmodule BookstoreWeb.CategoryController do
   def show(conn, %{"id" => id}) do
     category = Genres.get_category!(id)
     render(conn, "show.html", category: category)
+  end
+
+
+  def show_books(conn, %{"name" => name}) do
+    books = Bookstore.Inventory.Book.books_by_category(name)
+    conn
+    |> assign(:books, books)
+    |> assign(:name, name)
+    |> render("show_books.html")
   end
 
   def edit(conn, %{"id" => id}) do

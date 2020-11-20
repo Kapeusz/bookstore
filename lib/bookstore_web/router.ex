@@ -1,12 +1,12 @@
 defmodule BookstoreWeb.Router do
   use BookstoreWeb, :router
-
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug BookstoreWeb.Plugs.RoutesPlug
   end
 
   pipeline :api do
@@ -20,7 +20,12 @@ defmodule BookstoreWeb.Router do
     resources "/books", BookController
     resources "/categories", CategoryController
     resources "/authors", AuthorController
+    get "/category/:name", CategoryController, :show_books
+    get "/author/:name", AuthorController, :show_author_books
   end
+
+
+
 
   # Other scopes may use custom stacks.
   # scope "/api", BookstoreWeb do
