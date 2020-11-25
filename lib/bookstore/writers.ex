@@ -34,11 +34,11 @@ defmodule Bookstore.Writers do
       iex> get_author!(123)
       %Author{}
 
-      iex> get_author!(456)
+      iex> get_author!(doesn't exist)
       ** (Ecto.NoResultsError)
 
   """
-  def get_author!(id), do: Repo.get!(Author, id)
+  def get_author!(slug), do: Repo.get_by!(Author, slug: slug)
 
   @doc """
   Creates a author.
