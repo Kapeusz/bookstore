@@ -49,4 +49,12 @@ defmodule Bookstore.Inventory.Book do
     |> Repo.all()
     |> Repo.preload(:author)
   end
+
+  def books_by_author(name) do
+    from(b in Bookstore.Inventory.Book,
+    join: a in assoc(b, :author),
+    where: a.slug == ^name)
+    |> Repo.all()
+    |> Repo.preload(:author)
+  end
 end

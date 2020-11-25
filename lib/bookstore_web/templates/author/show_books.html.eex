@@ -1,4 +1,5 @@
-
+<h1 class="page-title"><%= name_case @name %></h1>
+<div>
   <%= for book <- @books do %>
       <div class="book">
           <div class="book-title"><%= book.title %></div>
@@ -6,6 +7,6 @@
           <td><%= book.author.first_name %> <%= book.author.last_name %></td>
           <td><%= book_img(book, :thumbnail) %></td>
       </div>
-      <span><%= link "Back", to: Routes.category_path(@conn, :index) %></span>
+      <span><%= link "Back", to: Routes.author_path(@conn, :index) %></span>
   <% end %>
 </div>

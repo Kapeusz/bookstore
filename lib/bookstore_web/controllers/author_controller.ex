@@ -31,6 +31,14 @@ defmodule BookstoreWeb.AuthorController do
     render(conn, "show.html", author: author)
   end
 
+  def show_author_books(conn, %{"name" => name}) do
+    books = Bookstore.Inventory.Book.books_by_author(name)
+    conn
+    |> assign(:books, books)
+    |> assign(:name, name)
+    |> render("show_books.html")
+  end
+
   def edit(conn, %{"id" => id}) do
     author = Writers.get_author!(id)
     changeset = Writers.change_author(author)
