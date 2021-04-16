@@ -29,7 +29,7 @@
   <%= date_select f, :published_on, builder: fn b -> %>
     <%= b.(:day, prompt: "Date") %>
     <%= b.(:month, prompt: "Month") %>
-    <%= b.(:year, prompt: "Year") %>
+    <%= b.(:year, prompt: "Year", options: -2000..(DateTime.utc_now.year())) %>
   <% end %>
 
   <%= error_tag f, :published_on %>
