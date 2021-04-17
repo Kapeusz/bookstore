@@ -121,4 +121,12 @@ defmodule Bookstore.Inventory do
     list_books()
     |> Enum.filter(fn(book) -> book.category.name == name end)
   end
+
+  def newest_books do
+    Book
+    |> Book.recent_books()
+    |> Repo.preload(:author)
+    |> Repo.preload(:category)
+  end
+
 end

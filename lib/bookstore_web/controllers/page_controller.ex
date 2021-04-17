@@ -22,7 +22,8 @@ defmodule BookstoreWeb.PageController do
   end
 
   def index(conn, _params) do
-    books = Inventory.list_books()
+    books = Inventory.newest_books()
     render(conn, "index.html", books: books)
   end
+
 end

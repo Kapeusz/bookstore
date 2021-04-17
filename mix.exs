@@ -51,7 +51,7 @@ defmodule Bookstore.MixProject do
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
       {:waffle_ecto, "~> 0.0.9"},
-      {:slugify, "~> 1.3"},
+      {:slugify, "~> 1.3"}
     ]
   end
 

@@ -57,4 +57,8 @@ defmodule Bookstore.Inventory.Book do
     |> Repo.all()
     |> Repo.preload(:author)
   end
+
+  def recent_books(inserted_at) do
+    from(b in Bookstore.Inventory.Book, limit: 15, order_by: [desc: b.inserted_at]) |> Repo.all() |> Repo.preload(:author)
+  end
 end
