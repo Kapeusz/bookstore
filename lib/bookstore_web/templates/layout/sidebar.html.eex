@@ -1,0 +1,43 @@
+<!-- <ul>
+    <li><%= link "Action", to: category_path(@conn, :show_books, "action")  %></li>
+    <li><%= link "Architecture", to: category_path(@conn, :show_books, "architecture") %></li>
+    <li><%= link "Art", to: category_path(@conn, :show_books, "art") %></li>
+    <li><%= link "Beauty", to: category_path(@conn, :show_books, "beauty") %></li>
+    <li><%= link "Biography", to: category_path(@conn, :show_books, "biography") %></li>
+    <li><%= link "Business", to: category_path(@conn, :show_books, "business") %></li>
+    <li><%= link "Classics", to: category_path(@conn, :show_books, "classics") %></li>
+    <li><%= link "Comedy", to: category_path(@conn, :show_books, "comedy") %></li>
+    <li><%= link "Comics", to: category_path(@conn, :show_books, "comics") %></li>
+    <li><%= link "Cooking", to: category_path(@conn, :show_books, "cooking") %></li>
+    <li><%= link "Crime", to: category_path(@conn, :show_books, "crime") %></li>
+    <li><%= link "Dictionaries", to: category_path(@conn, :show_books, "dictionaries") %></li>
+    <li><%= link "Drama", to: category_path(@conn, :show_books, "drama") %></li>
+    <li><%= link "Economics", to: category_path(@conn, :show_books, "economics") %></li>
+    <li><%= link "Fantasy", to: category_path(@conn, :show_books, "fantasy") %></li>
+    <li><%= link "Fiction", to: category_path(@conn, :show_books, "fiction") %></li>
+    <li><%= link "Food", to: category_path(@conn, :show_books, "food") %></li>
+    <li><%= link "Health", to: category_path(@conn, :show_books, "health") %></li>
+    <li><%= link "History", to: category_path(@conn, :show_books, "history") %></li>
+    <li><%= link "Horror", to: category_path(@conn, :show_books, "horror") %></li>
+    <li><%= link "Kids", to: category_path(@conn, :show_books, "kids") %></li>
+    <li><%= link "Law", to: category_path(@conn, :show_books, "law") %></li>
+    <li><%= link "Lifestyle", to: category_path(@conn, :show_books, "lifestyle") %></li>
+    <li><%= link "Music", to: category_path(@conn, :show_books, "music") %></li>
+    <li><%= link "Poetry", to: category_path(@conn, :show_books, "poetry") %></li>
+    <li><%= link "Politics", to: category_path(@conn, :show_books, "politics") %></li>
+    <li><%= link "Psychology", to: category_path(@conn, :show_books, "psychology") %></li>
+    <li><%= link "Religion", to: category_path(@conn, :show_books, "religion") %></li>
+    <li><%= link "Romance", to: category_path(@conn, :show_books, "romance") %></li>
+    <li><%= link "Sci-fi", to: category_path(@conn, :show_books, "sci-fi") %></li>
+    <li><%= link "Science", to: category_path(@conn, :show_books, "science") %></li>
+    <li><%= link "Sport", to: category_path(@conn, :show_books, "sport") %></li>
+    <li><%= link "Sociology", to: category_path(@conn, :show_books, "sociology") %></li>            <li><%= link "Thriller", to: category_path(@conn, :show_books, "thriller") %></li>
+    <li><%= link "Travel", to: category_path(@conn, :show_books, "travel") %></li>
+</ul> -->
+<ul>
+    <%= for category <- show_categories() do %>
+        <li><%= link category.name,to: Routes.category_path(@conn, :show, category) %></li>
+    <% end %>
+</ul>
+
+  

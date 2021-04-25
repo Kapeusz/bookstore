@@ -36,15 +36,22 @@ defmodule Bookstore.Inventory do
       %Book{}
 
       iex> get_book!(456)
-      ** (Ecto.NoResultsError)
+      ** (Ecto.NoResultsError
 
-  """
-  def get_book!(id) do
+        def get_book!(slug) do
     Book
-    |> Repo.get!(id)
+    |> Repo.get_by!(Book, slug: slug)
     |> Repo.preload(:category)
     |> Repo.preload(:author)
-  end
+  end)
+
+  """
+
+  def get_book!(slug),
+    do:
+      Repo.get_by!(Book, slug: slug)
+      |> Repo.preload(:category)
+      |> Repo.preload(:author)
 
   @doc """
   Creates a book.
@@ -119,7 +126,7 @@ defmodule Bookstore.Inventory do
 
   def get_category_books(name) do
     list_books()
-    |> Enum.filter(fn(book) -> book.category.name == name end)
+    |> Enum.filter(fn book -> book.category.name == name end)
   end
 
   def newest_books do
@@ -128,5 +135,4 @@ defmodule Bookstore.Inventory do
     |> Repo.preload(:author)
     |> Repo.preload(:category)
   end
-
 end

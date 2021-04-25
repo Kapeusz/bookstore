@@ -6,7 +6,7 @@ defmodule BookstoreWeb.CategoryController do
   alias Bookstore.Genres.Category
 
   def index(conn, _params) do
-    categories = Genres.list_categories()
+    categories = Genres.list_alphabetical_categories()
     render(conn, "index.html", categories: categories)
   end
 
@@ -32,9 +32,9 @@ defmodule BookstoreWeb.CategoryController do
     render(conn, "show.html", category: category)
   end
 
-
   def show_books(conn, %{"name" => name}) do
     books = Bookstore.Inventory.Book.books_by_category(name)
+
     conn
     |> assign(:books, books)
     |> assign(:name, name)

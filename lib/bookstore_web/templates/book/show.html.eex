@@ -27,8 +27,8 @@
   </li>
 
   <li>
-    <strong>Published on:</strong>
-    <%= @book.published_on %>
+    <strong>Year published:</strong>
+    <%= @book.year_published %>
   </li>
 
   <li>

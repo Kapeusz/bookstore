@@ -25,14 +25,9 @@
   <%= text_input f, :description %>
   <%= error_tag f, :description %>
 
-  <%= label f, :published_on %>
-  <%= date_select f, :published_on, builder: fn b -> %>
-    <%= b.(:day, prompt: "Date") %>
-    <%= b.(:month, prompt: "Month") %>
-    <%= b.(:year, prompt: "Year", options: -2000..(DateTime.utc_now.year())) %>
-  <% end %>
-
-  <%= error_tag f, :published_on %>
+  <%= label f, :year_published %>
+  <%= number_input f, :year_published %>
+  <%= error_tag f, :year_published %>
 
   <%= label f, :original_price %>
   <%= number_input f, :original_price, step: "any" %>

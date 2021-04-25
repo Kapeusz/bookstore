@@ -9,8 +9,8 @@ defmodule BookstoreWeb.BookController do
   alias Bookstore.Writers.Author
   alias Bookstore.Writers
 
-  plug :load_categories when action in [:new, :create, :edit, :update]
-  plug :load_authors when action in [:new, :create, :edit, :update]
+  plug(:load_categories when action in [:new, :create, :edit, :update])
+  plug(:load_authors when action in [:new, :create, :edit, :update])
   # plug :load_author_full_name when action in [:index, :show]
 
   defp load_categories(conn, _) do

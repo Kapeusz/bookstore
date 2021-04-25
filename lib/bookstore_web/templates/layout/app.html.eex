@@ -9,10 +9,48 @@
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <%= render "app_nav.html", conn: @conn %>
+    <!-- NAVBAR COMPONENT -->
+    <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <span class="font-bold text-xl">Bookstore</span>
+      </div>
+
+      <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
+        <div class="text-sm sm:flex-grow">
+          <a href="#" class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+            Writers
+          </a>
+          <a href="#" class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+            Recently added
+          </a>
+            <a href="#" class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+            Contact
+            </a>
+        </div>
+        <div class="pt-1 relative mx-auto text-gray-600">
+          <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+            type="search" name="search" placeholder="Search">
+          <button type="submit" class="right-0 top-0 mt-5 mr-4">
+            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+              viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+              width="512px" height="512px">
+              <path
+                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+            </svg>
+          </button>
+        </div>
+        <div>
+          <a href="#" class="inline-block text-sm px-4 py-1 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 md:mt-0">
+            Login
+          </a>
+        </div>
+      </div>
+    </nav>
     <header>
     </header>
-    <main>  
+    <main>
+      <%= render "sidebar.html", conn: @conn %>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= @inner_content %>

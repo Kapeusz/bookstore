@@ -5,6 +5,14 @@ defmodule BookstoreWeb.PageView do
   alias Bookstore.Writers
   alias Bookstore.Writers.Author
   alias Bookstore.Views.BookView
+  alias Bookstore.Inventory
+  alias Bookstore.Inventory.Book
+
+  def name_case(name) do
+    name
+    |> String.downcase()
+    |> String.capitalize()
+  end
 
   def category_select_options(categories) do
     for category <- categories, do: {category.name, category.id}

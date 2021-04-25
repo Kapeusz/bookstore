@@ -35,7 +35,7 @@ defmodule Bookstore.Genres do
       ** (Ecto.NoResultsError)
 
   """
-  def get_category!(id), do: Repo.get!(Category, id)
+  def get_category!(slug), do: Repo.get_by!(Category, slug: slug)
 
   @doc """
   Creates a category.

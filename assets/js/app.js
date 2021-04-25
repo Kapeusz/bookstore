@@ -13,3 +13,6 @@ import "../css/app.scss"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+
+//background color
+document.body.classList.add('bg-blue-100');

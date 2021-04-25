@@ -6,17 +6,18 @@ defmodule Bookstore.Inventory.Book do
   use Waffle.Ecto.Schema
 
   alias Bookstore.Repo
-
+  @derive {Phoenix.Param, key: :slug}
   schema "books" do
-    field :description, :string
-    field :image_url, BookstoreWeb.Uploaders.ImageUploader.Type
-    field :isbn, :string
-    field :original_price, :float
-    field :published_on, :date
-    field :title, :string
+    field(:description, :string)
+    field(:image_url, BookstoreWeb.Uploaders.ImageUploader.Type)
+    field(:isbn, :string)
+    field(:original_price, :float)
+    field(:title, :string)
+    field(:slug, :string)
+    field(:year_published, :integer)
 
-    belongs_to :category, Bookstore.Genres.Category
-    belongs_to :author, Bookstore.Writers.Author
+    belongs_to(:category, Bookstore.Genres.Category)
+    belongs_to(:author, Bookstore.Writers.Author)
 
     timestamps()
   end
@@ -24,9 +25,32 @@ defmodule Bookstore.Inventory.Book do
   @doc false
   def changeset(book, attrs) do
     book
-    |> cast(attrs, [:author_id, :category_id, :isbn, :title, :description, :published_on, :original_price])
-    |> validate_required([:isbn, :title, :description, :published_on, :original_price])
+    |> cast(attrs, [
+      :author_id,
+      :category_id,
+      :isbn,
+      :title,
+      :description,
+      :year_published,
+      :original_price,
+      :slug
+    ])
+    |> validate_required([:isbn, :title, :description, :year_published, :original_price])
+    |> build_slug()
     |> cast_attachments(attrs, [:image_url])
+  end
+
+  def build_slug(changeset) do
+    year_published = get_field(changeset, :year_published)
+    title = get_field(changeset, :title)
+
+    if year_published && title do
+      name = Enum.join([year_published, title], "/")
+      slug = Slug.slugify(name)
+      put_change(changeset, :slug, slug)
+    else
+      changeset
+    end
   end
 
   # def get_author_full_name(author) do
@@ -38,27 +62,31 @@ defmodule Bookstore.Inventory.Book do
   # end
 
   def author_full_name(author) do
-    from(b in Book, preload: [:authors])  |> Repo.all()
+    from(b in Book, preload: [:authors]) |> Repo.all()
   end
 
   def books_by_category(name) do
     from(b in Bookstore.Inventory.Book,
-    join: c in assoc(b, :category),
-    join: a in assoc(b, :author),
-    where: fragment("LOWER(?)", c.name) == ^name)
+      join: c in assoc(b, :category),
+      join: a in assoc(b, :author),
+      where: fragment("LOWER(?)", c.name) == ^name
+    )
     |> Repo.all()
     |> Repo.preload(:author)
   end
 
   def books_by_author(name) do
     from(b in Bookstore.Inventory.Book,
-    join: a in assoc(b, :author),
-    where: a.slug == ^name)
+      join: a in assoc(b, :author),
+      where: a.slug == ^name
+    )
     |> Repo.all()
     |> Repo.preload(:author)
   end
 
   def recent_books(inserted_at) do
-    from(b in Bookstore.Inventory.Book, limit: 15, order_by: [desc: b.inserted_at]) |> Repo.all() |> Repo.preload(:author)
+    from(b in Bookstore.Inventory.Book, limit: 15, order_by: [desc: b.inserted_at])
+    |> Repo.all()
+    |> Repo.preload(:author)
   end
 end

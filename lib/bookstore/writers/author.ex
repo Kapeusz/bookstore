@@ -6,12 +6,12 @@ defmodule Bookstore.Writers.Author do
 
   @derive {Phoenix.Param, key: :slug}
   schema "authors" do
-    field :biography, :string
-    field :first_name, :string
-    field :last_name, :string
-    field :slug, :string
+    field(:biography, :string)
+    field(:first_name, :string)
+    field(:last_name, :string)
+    field(:slug, :string)
 
-    has_many :books, Bookstore.Inventory.Book
+    has_many(:books, Bookstore.Inventory.Book)
 
     timestamps()
   end
@@ -25,14 +25,16 @@ defmodule Bookstore.Writers.Author do
   end
 
   def alphabetical(query) do
-    from a in query,
-    select: %{id: a.id, name: concat(a.last_name, ' ', a.first_name)},
-    order_by: a.last_name
+    from(a in query,
+      select: %{id: a.id, name: concat(a.last_name, ' ', a.first_name)},
+      order_by: a.last_name
+    )
   end
 
   def build_slug(changeset) do
     first_name = get_field(changeset, :first_name)
     last_name = get_field(changeset, :last_name)
+
     if first_name && last_name do
       name = Enum.join([first_name, last_name], " ")
       slug = Slug.slugify(name)
@@ -41,5 +43,4 @@ defmodule Bookstore.Writers.Author do
       changeset
     end
   end
-
 end
