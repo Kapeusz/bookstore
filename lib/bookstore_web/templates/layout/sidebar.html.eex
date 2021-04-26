@@ -1,43 +1,24 @@
-<!-- <ul>
-    <li><%= link "Action", to: category_path(@conn, :show_books, "action")  %></li>
-    <li><%= link "Architecture", to: category_path(@conn, :show_books, "architecture") %></li>
-    <li><%= link "Art", to: category_path(@conn, :show_books, "art") %></li>
-    <li><%= link "Beauty", to: category_path(@conn, :show_books, "beauty") %></li>
-    <li><%= link "Biography", to: category_path(@conn, :show_books, "biography") %></li>
-    <li><%= link "Business", to: category_path(@conn, :show_books, "business") %></li>
-    <li><%= link "Classics", to: category_path(@conn, :show_books, "classics") %></li>
-    <li><%= link "Comedy", to: category_path(@conn, :show_books, "comedy") %></li>
-    <li><%= link "Comics", to: category_path(@conn, :show_books, "comics") %></li>
-    <li><%= link "Cooking", to: category_path(@conn, :show_books, "cooking") %></li>
-    <li><%= link "Crime", to: category_path(@conn, :show_books, "crime") %></li>
-    <li><%= link "Dictionaries", to: category_path(@conn, :show_books, "dictionaries") %></li>
-    <li><%= link "Drama", to: category_path(@conn, :show_books, "drama") %></li>
-    <li><%= link "Economics", to: category_path(@conn, :show_books, "economics") %></li>
-    <li><%= link "Fantasy", to: category_path(@conn, :show_books, "fantasy") %></li>
-    <li><%= link "Fiction", to: category_path(@conn, :show_books, "fiction") %></li>
-    <li><%= link "Food", to: category_path(@conn, :show_books, "food") %></li>
-    <li><%= link "Health", to: category_path(@conn, :show_books, "health") %></li>
-    <li><%= link "History", to: category_path(@conn, :show_books, "history") %></li>
-    <li><%= link "Horror", to: category_path(@conn, :show_books, "horror") %></li>
-    <li><%= link "Kids", to: category_path(@conn, :show_books, "kids") %></li>
-    <li><%= link "Law", to: category_path(@conn, :show_books, "law") %></li>
-    <li><%= link "Lifestyle", to: category_path(@conn, :show_books, "lifestyle") %></li>
-    <li><%= link "Music", to: category_path(@conn, :show_books, "music") %></li>
-    <li><%= link "Poetry", to: category_path(@conn, :show_books, "poetry") %></li>
-    <li><%= link "Politics", to: category_path(@conn, :show_books, "politics") %></li>
-    <li><%= link "Psychology", to: category_path(@conn, :show_books, "psychology") %></li>
-    <li><%= link "Religion", to: category_path(@conn, :show_books, "religion") %></li>
-    <li><%= link "Romance", to: category_path(@conn, :show_books, "romance") %></li>
-    <li><%= link "Sci-fi", to: category_path(@conn, :show_books, "sci-fi") %></li>
-    <li><%= link "Science", to: category_path(@conn, :show_books, "science") %></li>
-    <li><%= link "Sport", to: category_path(@conn, :show_books, "sport") %></li>
-    <li><%= link "Sociology", to: category_path(@conn, :show_books, "sociology") %></li>            <li><%= link "Thriller", to: category_path(@conn, :show_books, "thriller") %></li>
-    <li><%= link "Travel", to: category_path(@conn, :show_books, "travel") %></li>
-</ul> -->
-<ul>
-    <%= for category <- show_categories() do %>
-        <li><%= link category.name,to: Routes.category_path(@conn, :show, category) %></li>
-    <% end %>
+<!-- <div class="relative inline-flex"></div>
+<svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+<ul class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+        <%= for category <- show_categories() do %>
+            <li><%= link category.name,to: Routes.category_path(@conn, :show, category)%></li>
+        <% end %>
 </ul>
+</div> -->
 
-  
+
+<div class="relative inline-flex">
+    <input type="checkbox" id="sortbox" class="hidden absolute">
+    <label for="sortbox" class="flex items-center space-x-1 cursor-pointer">
+    <span class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">Choose category</span>
+    </label>
+
+        <div id="sortboxmenu" class="absolute mt-1 right-1 w-28 top-full shadow rounded opacity-0 bg-gray-300 border border-gray-400 transition delay-75 ease-in-out z-10 overflow-y-auto h-60 ">
+            <%= for category <- show_categories() do %>
+            <ul class="block text-right text-gray-900">
+            <li><%= link category.name,to: Routes.category_path(@conn, :show, category), class: "block px-3 py-2 hover:bg-gray-200"%></li>
+            <% end %>
+        </ul>
+    </div>
+</div>

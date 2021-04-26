@@ -1,7 +1,3 @@
-
-<h4 class="text-3xl font-normal leading-normal mt-0 mb-2 text-pink-800">
-      Recently added
-</h4>
 <%= render "recent_books.html", conn: @conn %>
 
 

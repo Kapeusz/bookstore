@@ -1,7 +1,8 @@
 <%= for book <- Inventory.newest_books() do %>
-    <tr>
-      <td><%= full_name(book.author) %></td>
-      <td><%= book.title %></td>
-      <td><%= book.original_price %></td>
-      <td><%= book_img(book, :thumbnail) %></td>
-<% end %>
+      <div class="my-2 px-2 w-1/2 md:w-1/3 lg:w-1/6">
+           <div class="block h-48 w-24"><%= book_img(book, :thumbnail) %></div> 
+           <p><%= full_name(book.author) %></p>
+           <p></p><%= book.title %></p>
+           <p>£<%= book.original_price %></p>
+      </div>
+<% end %>         

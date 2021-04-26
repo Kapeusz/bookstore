@@ -52,3 +52,7 @@ a {
 .group:hover .group-hover\:block {
   display: block;
 }
+
+#sortbox:checked ~ #sortboxmenu {
+  opacity: 1;
+}

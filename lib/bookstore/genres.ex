@@ -102,11 +102,16 @@ defmodule Bookstore.Genres do
     Category.changeset(category, attrs)
   end
 
-  def list_alphabetical_categories do Category
+  def list_alphabetical_categories do
+    Category
     |> Category.alphabetical()
     |> Repo.all()
   end
 
+  def category_dropdown do
+    query = from(c in Category, order_by: c.name)
+    categories = Repo.all(query)
+  end
 
   def create_category!(name) do
     Repo.insert!(%Category{name: name}, on_conflict: :nothing)

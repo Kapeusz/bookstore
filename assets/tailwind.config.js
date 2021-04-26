@@ -17,5 +17,8 @@ module.exports = {
     "../**/views/**/*.ex",
     "../**/live/**/*.ex",
     "./js/**/*.js"
-  ]
+  ],
+  variants: {
+    display: ['responsive', 'group-hover', 'group-focus'],
+  },
 }
