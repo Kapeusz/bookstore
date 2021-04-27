@@ -50,14 +50,16 @@
       </nav>
       <!-- END OF NAVBAR -->
     </header>
-    <main class="flex-grow">
+    <main class="min-h-screen flex justify-center">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-          <div class="flex flex-wrap my-8 -nx-2">
-            <%= @inner_content %>
-          </div>
+      <section clas="px-4 mx-auto mx-w-7xl sm:px-6 lg:px-8 lg:py-20 justify-items-center align-middle">
+        <div> 
+          <%= @inner_content %>
         </div>
-      </main>
+      </section>
+    </main>
+    <!-- START FOOTER -->
     <footer class="fixed w-screen flex justify-center px-4 text-gray-100 bg-gray-800 flex-shrink-0 bottom-0">
         <div class=" container py-6">
 
@@ -75,6 +77,7 @@
                 </div>
             </div>
         </div>
+    <!-- END OF FOOTER -->
     </footer>
   </body>
 </html>

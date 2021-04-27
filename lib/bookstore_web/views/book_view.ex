@@ -18,10 +18,14 @@ defmodule BookstoreWeb.BookView do
     |> img_tag()
   end
 
+  def book_img_without_img_tag(book, version) do
+    {book.image_url, book}
+    |> ImageUploader.url(version)
+  end
+
   def full_name(%Writers.Author{first_name: first_name, last_name: last_name}) do
     [first_name, last_name]
     |> Enum.reject(&(&1 == ""))
     |> Enum.join(" ")
   end
-
 end

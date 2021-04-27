@@ -33,4 +33,9 @@ defmodule BookstoreWeb.PageView do
     |> Enum.reject(&(&1 == ""))
     |> Enum.join(" ")
   end
+
+  def book_img_without_img_tag(book, version) do
+    {book.image_url, book}
+    |> ImageUploader.url(version)
+  end
 end
