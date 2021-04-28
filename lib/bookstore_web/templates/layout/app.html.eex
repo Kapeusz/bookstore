@@ -26,7 +26,9 @@
             <a href="#" class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
               Recently added
             </a>
+            <div class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
               <%= render "sidebar.html", conn: @conn %>
+          </div>
           </div>
           <div class="pt-1 relative mx-auto text-gray-600">
             <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
@@ -53,11 +55,9 @@
     <main class="min-h-screen flex justify-center">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <section clas="px-4 mx-auto mx-w-7xl sm:px-6 lg:px-8 lg:py-20 justify-items-center align-middle">
         <div> 
           <%= @inner_content %>
         </div>
-      </section>
     </main>
     <!-- START FOOTER -->
     <footer class="fixed w-screen flex justify-center px-4 text-gray-100 bg-gray-800 flex-shrink-0 bottom-0">

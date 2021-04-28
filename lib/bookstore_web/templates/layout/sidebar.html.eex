@@ -7,18 +7,32 @@
 </ul>
 </div> -->
 
+  <div
+    x-data="{ open: false }"
+    class="relative"
+  >
+    <button
+      x-on:click="open = true"
+      class="flex items-center bg-gray-800 focus:bg-gray-400 text-white focus:text-gray-900 font-semibold rounded focus:outline-none focus:shadow-inner"
+      type="button"
+    >
+       <span class="mr-1">Categories</span>
+       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  style="margin-top:3px">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+       </svg>
+    </button>
+    
+    <ul
+      x-show="open"
+      x-on:click.away="open = false"
+      class="bg-white text-gray-700 rounded shadow-lg absolute py-2 mt-1 overflow-auto h-48"
+      style="min-width:10rem"
+    >
+     <%= for category <- show_categories() do %>
+      <li>
+        <%= link category.name,to: Routes.category_path(@conn, :show, category), class: "block hover:bg-gray-200 whitespace-no-wrap py-2 px-4"%>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 
-<div class="relative inline-flex">
-    <input type="checkbox" id="sortbox" class="hidden absolute">
-    <label for="sortbox" class="flex items-center space-x-1 cursor-pointer">
-    <span class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">Choose category</span>
-    </label>
-
-        <div id="sortboxmenu" class="absolute mt-1 right-1 w-28 top-full shadow rounded opacity-0 bg-gray-300 border border-gray-400 transition delay-75 ease-in-out z-10 overflow-y-auto h-60 ">
-            <%= for category <- show_categories() do %>
-            <ul class="block text-right text-gray-900">
-            <li><%= link category.name,to: Routes.category_path(@conn, :show, category), class: "block px-3 py-2 hover:bg-gray-200"%></li>
-            <% end %>
-        </ul>
-    </div>
-</div>

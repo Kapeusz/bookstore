@@ -1,4 +1,4 @@
-<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+<!-- <%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
@@ -40,4 +40,59 @@
   <div>
     <%= submit "Save" %>
   </div>
-<% end %>
+<% end %> -->
+<div class="leading-loose">
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+  <form>
+
+    <div class="mt-2">
+      <label class="block text-sm text-gray-00" for="cus_name">Title</label>
+      <%= text_input f, :title, class: class="w-full px-5 py-1 text-gray-700 bg-white-200 rounded", placeholder: "Title" %>
+      <%= error_tag f, :title %>
+    </div>
+      <%= label f, :author_id, "Author", class: "block text-sm text-gray-600" %>
+      <%= select f, :author_id, author_select_options(@authors),
+      prompt: "Choose an author" %>
+    <div class="mt-2">
+      <label class=" block text-sm text-gray-600">Description</label>
+      <%= text_input f, :description, class: "w-full px-2 py-2 text-gray-700 bg-white-200 rounded", placeholder: "Description" %>
+      <%= error_tag f, :description %>
+    </div>
+    <div class="mt-2">
+      <label class=" block text-sm text-gray-600">ISBN</label>
+      <label class="hidden text-sm block text-gray-600" for="cus_email">ISBN</label>
+      <%= text_input f, :isbn, class: "w-full px-2 py-2 text-gray-700 bg-white-200 rounded", placeholder: "ISBN" %>
+      <%= error_tag f, :isbn %>
+    </div>
+    <div class="inline-block mt-2 w-1/2 pr-1">
+      <label class=" block text-sm text-gray-600">Price</label>
+      <%= number_input f, :original_price, step: "any", class: "w-full px-2 py-2 text-gray-700 bg-white-200 rounded", placeholder: "Price" %>
+      <%= error_tag f, :original_price %>
+    </div>
+    <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+      <label class=" block text-sm text-gray-600">Publishing year</label>
+      <%= number_input f, :year_published, class: "w-full px-2 py-2 text-gray-700 bg-white-200 rounded", placeholder: "Publishing year" %>
+      <%= error_tag f, :year_published %>
+    </div>
+        <div class="inline-block mt-2 w-1/2 pr-1">
+      <label class=" block text-sm text-gray-600">Category</label>
+      <%= select f, :category_id, category_select_options(@categories),
+      prompt: "Choose a category" %>
+    </div>
+    <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+      <label class=" block text-sm text-gray-600">Image</label>
+       <%= file_input f, :image_url %>
+       <%= error_tag f, :image_url %>
+    </div>
+    <div class="mt-4 pb-4">
+    <%= submit "Save", class: "px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" %>
+    </div>
+
+  </form>
+      <% end %>
+</div>

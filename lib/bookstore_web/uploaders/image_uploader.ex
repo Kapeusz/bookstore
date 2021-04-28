@@ -11,6 +11,10 @@ defmodule BookstoreWeb.Uploaders.ImageUploader do
     {:convert, "-resize 50%"}
   end
 
+  def transform(:big_thumbnail, _file_post) do
+    {:convert, "300x300^"}
+  end
+
   def storage_dir(version, {_file, post}) do
     title =
       post.title

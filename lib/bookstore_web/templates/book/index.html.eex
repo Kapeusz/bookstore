@@ -1,17 +1,21 @@
-<div class="grid md:grid-cols-3 gap-4">
-  <div>
-    <%= for book <- @books do %>
-      <%= full_name(book.author) %>
-      <%= book.category.name %>
-      <%= book.title %></td>
-      <%= book.original_price %>
-      <%= book_img(book, :thumbnail) %>
 
-      <!--<span><%= link "Show", to: Routes.book_path(@conn, :show, book) %></span>
-      <span><%= link "Edit", to: Routes.book_path(@conn, :edit, book) %></span>
-      <span><%= link "Delete", to: Routes.book_path(@conn, :delete, book), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      -->
-    <% end %>
+
+<h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Most recent books</h2>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-10 gap-y-10 p-6 ">
+<%= for book <- @books do %>
+<%= link to: Routes.book_path(@conn, :show, book) do %>
+  <div class="flex flex-col justify-between w-60 sm:w-60 h-80 bg-white bg-center text-gray-800 shadow-md overflow-hidden cursor-pointer rounded-md" style='background-image: url("<%= book_img_without_img_tag(book, :thumbnail) %>"); background-repeat: no-repeat; background-size: 100% 100%;'>
+    <div class="flex justify-between items-center ml-4 pr-8">
+    </div>
+    <div class="bg-white bg-opacity-95 shadow-md rounded-r-xl p-4 flex flex-col mr-4 mb-8">
+      <h3 class="truncate text-s font-bold pb-2"><%= book.title %></h3>
+      <p class="truncate text-gray-500 text-sm"><%= full_name(book.author) %></p>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-400 text-xs">£<%= book.original_price %></span>
+      </div>
+    </div>
   </div>
+  <% end %>
+<% end %>
 </div>
-<span><%= link "New Book", to: Routes.book_path(@conn, :new) %></span>
+</div>
