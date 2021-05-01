@@ -46,14 +46,14 @@
 <span><%= link "Edit", to: Routes.book_path(@conn, :edit, @book) %></span>
 <span><%= link "Back", to: Routes.book_path(@conn, :index) %></span> -->
 
-                <!-- this is full editable area -->
+
                 <div class="main flex w-100 p-8"> 
                     <div class="sub flex-1 h-128 w-64 px-4">
                         <%= book_img(@book, :original) %>
                     </div>
                     <div class="sub min-content my-auto">
                         <div class="head text-3xl font-bold mb-4"><%= @book.title %></div>
-                        <div class="long-text text-md whitespace-normal"><%= @book.description %></div>
+                        <div class="long-text text-md"><%= @book.description %></div>
                         <div class="text-sm py-2">Price: £<%= @book.original_price %></div>
                           <div class="text-sm py-2">Publishing year: <%= @book.year_published %></div>
                           <div class="text-sm py-2">ISBN: <%= @book.isbn %></div>

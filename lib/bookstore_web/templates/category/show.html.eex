@@ -1,4 +1,4 @@
-<h1>Show Category</h1>
+<h1><%= @category.name %></h1>
 
 <ul>
 
@@ -8,6 +8,5 @@
   </li>
 
 </ul>
-
-<span><%= link "Edit", to: Routes.category_path(@conn, :edit, @category) %></span>
+<!-- <span><%= link "Edit", to: Routes.category_path(@conn, :edit, @category) %></span> -->
 <span><%= link "Back", to: Routes.category_path(@conn, :index) %></span>

@@ -30,7 +30,7 @@
     >
      <%= for category <- show_categories() do %>
       <li>
-        <%= link category.name,to: Routes.category_path(@conn, :show, category), class: "block hover:bg-gray-200 whitespace-no-wrap py-2 px-4"%>
+        <%= link category.name,to: Routes.category_path(@conn, :show_category_books, category), class: "block hover:bg-gray-200 whitespace-no-wrap py-2 px-4"%>
       </li>
       <% end %>
     </ul>

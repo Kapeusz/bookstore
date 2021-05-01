@@ -32,13 +32,12 @@ defmodule BookstoreWeb.CategoryController do
     render(conn, "show.html", category: category)
   end
 
-  def show_books(conn, %{"name" => name}) do
+  def show_category_books(conn, %{"name" => name}) do
     books = Bookstore.Inventory.Book.books_by_category(name)
-
     conn
     |> assign(:books, books)
     |> assign(:name, name)
-    |> render("show_books.html")
+    |> render("show_category_books.html", conn: @conn)
   end
 
   def edit(conn, %{"id" => id}) do

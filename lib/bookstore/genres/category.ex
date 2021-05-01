@@ -6,10 +6,10 @@ defmodule Bookstore.Genres.Category do
   alias Bookstore.Inventory
   @derive {Phoenix.Param, key: :slug}
   schema "categories" do
-    field :name, :string
-    field :slug, :string
+    field(:name, :string)
+    field(:slug, :string)
 
-    has_many :books, Bookstore.Inventory.Book
+    has_many(:books, Bookstore.Inventory.Book)
 
     timestamps()
   end
@@ -23,7 +23,7 @@ defmodule Bookstore.Genres.Category do
   end
 
   def alphabetical(query) do
-    from c in query, order_by: c.name
+    from(c in query, order_by: c.name)
   end
 
   def build_slug(changeset) do
@@ -34,5 +34,4 @@ defmodule Bookstore.Genres.Category do
       changeset
     end
   end
-
 end

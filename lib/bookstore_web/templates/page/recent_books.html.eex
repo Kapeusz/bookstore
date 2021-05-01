@@ -20,7 +20,7 @@
     <div class="flex justify-between items-center ml-4 pr-8">
     </div>
     <div class="bg-white bg-opacity-95 shadow-md rounded-r-xl p-4 flex flex-col mr-4 mb-8">
-      <h3 class="truncate text-s font-bold pb-2"><%= book.title %></h3>
+      <h3 class="truncate text-s font-bold pb-2 truncate w-4/5"><%= book.title %></h3>
       <p class="truncate text-gray-500 text-sm"><%= full_name(book.author) %></p>
       <div class="flex justify-between items-center">
         <span class="text-gray-400 text-xs">£<%= book.original_price %></span>
