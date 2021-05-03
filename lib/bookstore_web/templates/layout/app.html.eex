@@ -20,8 +20,7 @@
 
         <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
           <div class="text-sm sm:flex-grow">
-            <a href="#" class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
-              Writers
+            <%= link "Writers", to: Routes.author_path(@conn, :index), class: "text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4" %>
             </a>
             <a href="#" class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
               Recently added

@@ -36,7 +36,7 @@ defmodule BookstoreWeb.AuthorController do
     conn
     |> assign(:books, books)
     |> assign(:name, name)
-    |> render("show_books.html")
+    |> render("show_author_books.html")
   end
 
   def edit(conn, %{"id" => id}) do
