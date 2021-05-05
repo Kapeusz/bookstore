@@ -21,6 +21,7 @@ defmodule BookstoreWeb.Router do
     resources("/books", BookController)
     resources("/categories", CategoryController)
     resources("/authors", AuthorController)
+    resources("/publishers", PublisherController)
     get("/category/:name", CategoryController, :show_category_books)
     get("/author/:name", AuthorController, :show_author_books)
   end

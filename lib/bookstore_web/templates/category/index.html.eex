@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-<%= for category <- @categories do %>
+    <%= for category <- @categories do %>
     <tr>
       <td><%= category.name %></td>
 
@@ -19,7 +19,7 @@
         <span><%= link "Delete", to: Routes.category_path(@conn, :delete, category), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
-<% end %>
+    <% end %>
   </tbody>
 </table>
 

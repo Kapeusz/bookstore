@@ -34,6 +34,7 @@ defmodule BookstoreWeb.CategoryController do
 
   def show_category_books(conn, %{"name" => name}) do
     books = Bookstore.Inventory.Book.books_by_category(name)
+
     conn
     |> assign(:books, books)
     |> assign(:name, name)

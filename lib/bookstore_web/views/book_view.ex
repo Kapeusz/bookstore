@@ -3,6 +3,8 @@ defmodule BookstoreWeb.BookView do
   alias BookstoreWeb.Uploaders.ImageUploader
   alias Bookstore.Writers
   alias Bookstore.Writers.Author
+  alias Bookstore.Media
+  alias Bookstore.Media.Publisher
 
   def category_select_options(categories) do
     for category <- categories, do: {category.name, category.id}
@@ -10,6 +12,10 @@ defmodule BookstoreWeb.BookView do
 
   def author_select_options(authors) do
     for author <- authors, do: {author.name, author.id}
+  end
+
+  def publisher_select_options(publishers) do
+    for publisher <- publishers, do: {publisher.name, publisher.id}
   end
 
   def book_img(book, version) do

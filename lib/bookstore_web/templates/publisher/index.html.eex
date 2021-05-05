@@ -1,0 +1,28 @@
+<h1>Listing Publishers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for publisher <- @publishers do %>
+    <tr>
+      <td><%= publisher.name %></td>
+      <td><%= publisher.email %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.publisher_path(@conn, :show, publisher) %></span>
+        <span><%= link "Edit", to: Routes.publisher_path(@conn, :edit, publisher) %></span>
+        <span><%= link "Delete", to: Routes.publisher_path(@conn, :delete, publisher), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Publisher", to: Routes.publisher_path(@conn, :new) %></span>

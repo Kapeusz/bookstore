@@ -18,6 +18,7 @@ defmodule Bookstore.Inventory.Book do
 
     belongs_to(:category, Bookstore.Genres.Category)
     belongs_to(:author, Bookstore.Writers.Author)
+    belongs_to(:publisher, Bookstore.Media.Publisher)
 
     timestamps()
   end
@@ -28,6 +29,7 @@ defmodule Bookstore.Inventory.Book do
     |> cast(attrs, [
       :author_id,
       :category_id,
+      :publisher_id,
       :isbn,
       :title,
       :description,

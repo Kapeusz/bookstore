@@ -43,3 +43,132 @@
 # Enum.each(writers_data, fn(data) ->
 #   Writers.create_author(data)
 # end)
+
+alias Bookstore.Media
+alias Bookstore.Repo
+alias Bookstore.Media.Publisher
+
+Repo.insert!(%Publisher{
+  name: "Penguin Random House",
+  email: "consumerservices@penguinrandomhouse.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Hachette Livre",
+  email: "support-hli@hachettepro.fr"
+})
+
+Repo.insert!(%Publisher{
+  name: "HarperCollins",
+  email: "orders@harpercollins.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Macmillan Publishers",
+  email: ""
+})
+
+Repo.insert!(%Publisher{
+  name: "Simon & Schuster",
+  email: "TorUKSubmissions@macmillan.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Wiley",
+  email: "creditriskdept@wiley.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Kodansha",
+  email: "contact@kodansha.jp"
+})
+
+Repo.insert!(%Publisher{
+  name: "Shueisha",
+  email: "editor@japanecho.co.jp"
+})
+
+Repo.insert!(%Publisher{
+  name: "Bonnier Books",
+  email: "info@bonnierbooks.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Klett",
+  email: "contact klett-sprachen.de"
+})
+
+Repo.insert!(%Publisher{
+  name: "Egmont Books",
+  email: "mail@publishers.org.uk"
+})
+
+Repo.insert!(%Publisher{
+  name: "Canaveral Press",
+  email: "contact@canaveralpress.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Coffee House Press",
+  email: "info@coffeehousepress.org"
+})
+
+Repo.insert!(%Publisher{
+  name: "Mercury House",
+  email: "spd@spdbooks.org"
+})
+
+Repo.insert!(%Publisher{
+  name: "New Rivers Press",
+  email: "contact@nrp.org"
+})
+
+Repo.insert!(%Publisher{
+  name: "Small Beer Press",
+  email: "info@smallbeerpress.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Legend Press",
+  email: ""
+})
+
+Repo.insert!(%Publisher{
+  name: "Graywolf Press",
+  email: ""
+})
+
+Repo.insert!(%Publisher{
+  name: "Blackwell Publishers",
+  email: "info@legendtimesgroup.co.uk"
+})
+
+Repo.insert!(%Publisher{
+  name: "Algonquin Books",
+  email: "inquiry@algonquin.com"
+})
+
+Repo.insert!(%Publisher{
+  name: "Atlantic Books",
+  email: "publicity@atlantic-books.co.uk"
+})
+
+Repo.insert!(%Publisher{
+  name: "Mercury House",
+  email: "contact@mercuryhouse.co.uk"
+})
+
+Repo.insert!(%Publisher{
+  name: "TSAR Publications",
+  email: "treview@total.net"
+})
+
+Repo.insert!(%Publisher{
+  name: "Moschatel Press",
+  email: "inquire@moschatel.net"
+})
+
+Repo.insert!(%Publisher{
+  name: "Faber Independent Alliance",
+  email: "gapublicity@faber.co.uk"
+})

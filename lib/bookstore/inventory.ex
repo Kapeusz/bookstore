@@ -8,6 +8,7 @@ defmodule Bookstore.Inventory do
   alias Bookstore.Genres
   alias Bookstore.Genres.Category
   alias Bookstore.Inventory.Book
+  alias Bookstore.Media.Publisher
 
   @doc """
   Returns the list of books.

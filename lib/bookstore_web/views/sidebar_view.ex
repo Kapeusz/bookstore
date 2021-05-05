@@ -5,6 +5,6 @@ defmodule Bookstore.SidebarView do
   alias Bookstore.Genres
 
   def show_categories() do
-    Category.category_dropdown()
+    Genres.list_alphabetical_categories()
   end
 end

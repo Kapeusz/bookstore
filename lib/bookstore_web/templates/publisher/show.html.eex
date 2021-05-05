@@ -1,0 +1,18 @@
+<h1>Show Publisher</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @publisher.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @publisher.email %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.publisher_path(@conn, :edit, @publisher) %></span>
+<span><%= link "Back", to: Routes.publisher_path(@conn, :index) %></span>

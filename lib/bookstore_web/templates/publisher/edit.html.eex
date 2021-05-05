@@ -1,0 +1,5 @@
+<h1>Edit Publisher</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.publisher_path(@conn, :update, @publisher)) %>
+
+<span><%= link "Back", to: Routes.publisher_path(@conn, :index) %></span>

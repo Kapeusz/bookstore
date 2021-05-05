@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-<%= for author <- @authors do %>
+    <%= for author <- @authors do %>
     <tr>
       <td><%= author.first_name %></td>
       <td><%= author.last_name %></td>
@@ -23,8 +23,8 @@
         <span><%= link "Delete", to: Routes.author_path(@conn, :delete, author), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
-<% end %>
+    <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Author", to: Routes.author_path(@conn, :new) %></span>
+<span><%= link "New Author", to: Routes.author_path(@conn, :new) %></span>ą
