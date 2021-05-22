@@ -105,7 +105,8 @@ defmodule Bookstore.Writers do
     Author.changeset(author, attrs)
   end
 
-  def list_alphabetical_authors do Author
+  def list_alphabetical_authors do
+    Author
     |> Author.alphabetical()
     |> Repo.all()
   end

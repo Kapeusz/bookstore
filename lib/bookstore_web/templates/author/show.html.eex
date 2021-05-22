@@ -12,11 +12,6 @@
     <%= @author.last_name %>
   </li>
 
-  <li>
-    <strong>Biography:</strong>
-    <%= @author.biography %>
-  </li>
-
 </ul>
 
 <span><%= link "Edit", to: Routes.author_path(@conn, :edit, @author) %></span></br>

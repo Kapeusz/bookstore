@@ -9,6 +9,8 @@ defmodule Bookstore.Inventory do
   alias Bookstore.Genres.Category
   alias Bookstore.Inventory.Book
   alias Bookstore.Media.Publisher
+  alias BookstoreWeb.Views.ViewHelpers
+  alias BookstoreWeb.Views
 
   @doc """
   Returns the list of books.
@@ -19,11 +21,15 @@ defmodule Bookstore.Inventory do
       [%Book{}, ...]
 
   """
-  def list_books do
+
+  def list_books(params) do
+    search_term = get_in(params, ["query"])
+
     Book
+    |> Bookstore.Inventory.Book.search(search_term)
     |> preload(:category)
     |> preload(:author)
-    |> Repo.all()
+    |> preload(:publisher)
   end
 
   @doc """
@@ -126,7 +132,7 @@ defmodule Bookstore.Inventory do
   end
 
   def get_category_books(name) do
-    list_books()
+    list_books(2)
     |> Enum.filter(fn book -> book.category.name == name end)
   end
 

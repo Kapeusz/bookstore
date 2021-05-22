@@ -58,5 +58,6 @@
     <div class="text-sm py-2">Publishing year: <%= @book.year_published %></div>
     <div class="text-sm py-2">ISBN: <%= @book.isbn %></div>
     <div class="text-sm py-2">Category: <%= @book.category.name %></div>
+    <div class="text-sm py-2">Quantity: <%= @book.quantity %></div>
   </div>
 </div>

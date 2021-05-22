@@ -4,9 +4,10 @@ defmodule Bookstore.Writers.Author do
   import CustomSQLFunctions
   import Ecto.Query
 
+  alias Bookstore.Repo
+
   @derive {Phoenix.Param, key: :slug}
   schema "authors" do
-    field(:biography, :string)
     field(:first_name, :string)
     field(:last_name, :string)
     field(:slug, :string)
@@ -19,9 +20,9 @@ defmodule Bookstore.Writers.Author do
   @doc false
   def changeset(author, attrs) do
     author
-    |> cast(attrs, [:first_name, :last_name, :biography, :slug])
+    |> cast(attrs, [:first_name, :last_name, :slug])
     |> build_slug()
-    |> validate_required([:first_name, :last_name, :biography, :slug])
+    |> validate_required([:first_name, :last_name, :slug])
   end
 
   def alphabetical(query) do

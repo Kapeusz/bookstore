@@ -15,6 +15,7 @@ defmodule Bookstore.Inventory.Book do
     field(:title, :string)
     field(:slug, :string)
     field(:year_published, :integer)
+    field(:quantity, :integer)
 
     belongs_to(:category, Bookstore.Genres.Category)
     belongs_to(:author, Bookstore.Writers.Author)
@@ -35,7 +36,8 @@ defmodule Bookstore.Inventory.Book do
       :description,
       :year_published,
       :original_price,
-      :slug
+      :slug,
+      :quantity
     ])
     |> validate_required([:isbn, :title, :description, :year_published, :original_price])
     |> build_slug()
@@ -90,5 +92,28 @@ defmodule Bookstore.Inventory.Book do
     from(b in Bookstore.Inventory.Book, limit: 15, order_by: [desc: b.inserted_at])
     |> Repo.all()
     |> Repo.preload(:author)
+  end
+
+  def search(book, search_term) do
+    wildcard_search = "%#{search_term}%"
+
+    from(b in Bookstore.Inventory.Book,
+      as: :book,
+      left_join: a in Bookstore.Writers.Author,
+      as: :author,
+      on: a.id == b.author_id,
+      left_join: c in Bookstore.Genres.Category,
+      as: :category,
+      on: c.id == b.category_id,
+      left_join: p in Bookstore.Media.Publisher,
+      as: :publisher,
+      on: p.id == b.publisher_id,
+      where: fragment("? % ?", b.title, ^wildcard_search),
+      or_where: ilike(b.title, ^wildcard_search),
+      or_where: ilike(b.description, ^wildcard_search),
+      or_where: ilike(a.last_name, ^wildcard_search),
+      or_where: ilike(a.first_name, ^wildcard_search),
+      preload: [author: a, category: c, publisher: p]
+    )
   end
 end

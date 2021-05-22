@@ -1,12 +1,14 @@
 defmodule BookstoreWeb.CategoryView do
   use BookstoreWeb, :view
-
+  import BookstoreWeb.ViewHelpers
   alias BookstoreWeb.Uploaders.ImageUploader
   alias Bookstore.Inventory
   alias Bookstore.Inventory.Book
   alias BookstoreWeb.CategoryController
   alias Bookstore.Writers
   alias Bookstore.Writers.Author
+  alias BookstoreWeb.ViewHelpers
+
   def name_case(name) do
     name
     |> String.downcase()

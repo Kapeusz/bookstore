@@ -15,7 +15,6 @@
     <tr>
       <td><%= author.first_name %></td>
       <td><%= author.last_name %></td>
-      <td><%= author.biography %></td>
 
       <td>
         <span><%= link "Show", to: Routes.author_path(@conn, :show, author) %></span>

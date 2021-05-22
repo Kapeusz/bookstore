@@ -1,5 +1,6 @@
 defmodule BookstoreWeb.PageView do
   use BookstoreWeb, :view
+  import BookstoreWeb.ViewHelpers
 
   alias BookstoreWeb.Uploaders.ImageUploader
   alias Bookstore.Writers
@@ -7,6 +8,7 @@ defmodule BookstoreWeb.PageView do
   alias Bookstore.Views.BookView
   alias Bookstore.Inventory
   alias Bookstore.Inventory.Book
+  alias BookstoreWeb.ViewHelpers
 
   def name_case(name) do
     name

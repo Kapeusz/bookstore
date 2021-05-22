@@ -24,6 +24,7 @@ defmodule BookstoreWeb do
       import Plug.Conn
       import BookstoreWeb.Gettext
       alias BookstoreWeb.Router.Helpers, as: Routes
+      alias BookstoreWeb.Views.ViewHelpers
     end
   end
 
@@ -36,12 +37,14 @@ defmodule BookstoreWeb do
       # Import convenience functions from controllers
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
-              # Use all HTML functionality (forms, tags, etc)
+
+      # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
       import BookstoreWeb.Router.Helpers
       import BookstoreWeb.ErrorHelpers
       import BookstoreWeb.Gettext
+      import BookstoreWeb.ViewHelpers
 
       def render_shared(template, assigns \\ []) do
         render(BookstoreWeb.SharedView, template, assigns)

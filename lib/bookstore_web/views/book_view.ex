@@ -1,10 +1,12 @@
 defmodule BookstoreWeb.BookView do
   use BookstoreWeb, :view
+  import BookstoreWeb.ViewHelpers
   alias BookstoreWeb.Uploaders.ImageUploader
   alias Bookstore.Writers
   alias Bookstore.Writers.Author
   alias Bookstore.Media
   alias Bookstore.Media.Publisher
+  alias BookstoreWeb.ViewHelpers
 
   def category_select_options(categories) do
     for category <- categories, do: {category.name, category.id}

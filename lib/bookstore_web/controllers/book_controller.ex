@@ -1,6 +1,9 @@
 defmodule BookstoreWeb.BookController do
   use BookstoreWeb, :controller
-
+  import Ecto.Query
+  alias BookstoreWeb.Views.ViewHelpers
+  alias BookstoreWeb.Views
+  alias BookstoreWeb
   alias Bookstore.Repo
   alias Bookstore.Inventory
   alias Bookstore.Inventory.Book
@@ -26,8 +29,20 @@ defmodule BookstoreWeb.BookController do
     assign(conn, :publishers, Bookstore.Media.list_alphabetical_publishers())
   end
 
-  def index(conn, _params) do
-    books = Inventory.list_books()
+  @book_sort_fields [
+    "book__title",
+    "book__original_price"
+  ]
+
+  def index(conn, params) do
+    books =
+      Bookstore.Inventory.list_books(params)
+      |> BookstoreWeb.ViewHelpers.sort_by_params(params, @book_sort_fields)
+      |> Repo.all()
+    # |> Repo.preload(:author)
+    # |> Repo.preload(:category)
+    # |> Repo.preload(:publisher)
+
     render(conn, "index.html", books: books)
   end
 

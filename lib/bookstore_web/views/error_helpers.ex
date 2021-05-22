@@ -2,7 +2,8 @@ defmodule BookstoreWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
-
+  import BookstoreWeb.ViewHelpers
+  alias BookstoreWeb.ViewHelpers
   use Phoenix.HTML
 
   @doc """
