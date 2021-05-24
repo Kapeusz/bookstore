@@ -1,6 +1,8 @@
 defmodule BookstoreWeb.ViewHelpers do
   import Ecto.Query
   alias Bookstore.BookController
+  alias Bookstore.Inventory.Book
+  alias Bookstore.Inventory
 
   def create_order_url(conn, field_name, allowed_keys \\ ["query"]) do
     Phoenix.Controller.current_url(conn, get_order_params(conn.params, allowed_keys, field_name))

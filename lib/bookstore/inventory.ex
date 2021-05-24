@@ -21,12 +21,16 @@ defmodule Bookstore.Inventory do
       [%Book{}, ...]
 
   """
-
+  @book_sort_fields [
+    "book__title",
+    "book__original_price"
+  ]
   def list_books(params) do
     search_term = get_in(params, ["query"])
-
+    sort_params = get_in(params, ["order_by"])
     Book
     |> Bookstore.Inventory.Book.search(search_term)
+    |> BookstoreWeb.ViewHelpers.sort_by_params(params, @book_sort_fields)
     |> preload(:category)
     |> preload(:author)
     |> preload(:publisher)

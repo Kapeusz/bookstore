@@ -33,14 +33,17 @@ config :waffle,
   virtual_host: true
 
 config :ex_aws,
-  access_key_id: "X.X.X.",
-  secret_access_key: "X.X.X.,
+  access_key_id: "X.X.X",
+  secret_access_key: "X.X.X",
   region: "eu-central-1",
   s3: [
     scheme: "https://",
     host: "s3.eu-central-1.amazonaws.com",
     region: "eu-central-1"
   ]
+
+config :scrivener_html,
+  routes_helper: Bookstore.Router.Helpers
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

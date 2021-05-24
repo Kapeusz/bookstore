@@ -34,16 +34,18 @@ defmodule BookstoreWeb.BookController do
     "book__original_price"
   ]
 
-  def index(conn, params) do
-    books =
-      Bookstore.Inventory.list_books(params)
-      |> BookstoreWeb.ViewHelpers.sort_by_params(params, @book_sort_fields)
-      |> Repo.all()
-    # |> Repo.preload(:author)
-    # |> Repo.preload(:category)
-    # |> Repo.preload(:publisher)
 
-    render(conn, "index.html", books: books)
+  def index(conn, params) do
+    search_term = get_in(params, ["query"])
+    sort_params = get_in(params, ["order_by"])
+    books = Bookstore.Inventory.list_books(params)
+    |> Repo.paginate(params)
+    render(conn, "index.html",
+      books: books.entries,
+      page: books,
+      query: search_term,
+      order_by: sort_params
+    )
   end
 
   def new(conn, _params) do

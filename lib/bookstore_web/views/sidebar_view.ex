@@ -1,4 +1,4 @@
-defmodule Bookstore.SidebarView do
+defmodule BookstoreWeb.SidebarView do
   use BookstoreWeb, :view
   import Ecto.Query
   import BookstoreWeb.ViewHelpers

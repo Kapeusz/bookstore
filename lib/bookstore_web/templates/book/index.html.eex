@@ -9,7 +9,7 @@
 
     <th></th>
   </tr>
-</thead>
+<%= pagination_links @page, order_by: @order_by, query: @query, next: "Next", previous: "Prev" %></thead>
 </form>
 <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-10 gap-y-10 p-6 ">
   <%= for book <- @books do %>
