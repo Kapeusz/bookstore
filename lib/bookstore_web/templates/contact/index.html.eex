@@ -1,0 +1,11 @@
+<h1>Contact us</h1>
+
+<%= form_for @conn, Routes.contact_path(@conn, :create), fn f-> %>
+    <%= label f, :email %>
+    <%= text_input f, :email %>
+    </br>
+    <%= label f, :message %>
+    <%= textarea f, :message, rows: "3" %>
+    </br>
+    <%= submit "Send message" %>
+<% end %>

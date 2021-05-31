@@ -25,7 +25,7 @@
       <% end %>
       <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
         <div class="text-sm sm:flex-grow">
-          <%= link "Authors", to: Routes.author_path(@conn, :index), class: "text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4" %>
+          <%= link "Contact", to: Routes.contact_path(@conn, :index), class: "text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4" %>
           <%= link "Browse", to: Routes.book_path(@conn, :index), class: "text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4" %>
           <div class="text-white block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
             <%= render "sidebar.html", conn: @conn %>
