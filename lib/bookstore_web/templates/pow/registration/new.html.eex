@@ -1,0 +1,60 @@
+<h1>Register</h1>
+
+<%= form_for @changeset, @action, [as: :user], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+
+  <%= label f, :password %>
+  <%= password_input f, :password %>
+  <%= error_tag f, :password %>
+
+  <%= label f, :password_confirmation %>
+  <%= password_input f, :password_confirmation %>
+  <%= error_tag f, :password_confirmation %>
+
+  <%= label f, :first_name %>
+  <%= text_input f, :first_name %>
+  <%= error_tag f, :first_name %>
+  
+  <%= label f, :last_name %>
+  <%= text_input f, :last_name %>
+  <%= error_tag f, :last_name %>
+
+  <%= label f, :address1 %>
+  <%= text_input f, :address1 %>
+  <%= error_tag f, :address1 %>
+
+  <%= label f, :address2 %>
+  <%= text_input f, :address2 %>
+  <%= error_tag f, :address2 %>
+
+  <%= label f, :address3 %>
+  <%= text_input f, :address3 %>
+  <%= error_tag f, :address3 %>
+
+  <%= label f, :city %>
+  <%= text_input f, :city %>
+  <%= error_tag f, :city %>
+
+  <%= label f, :region %>
+  <%= text_input f, :region %>
+  <%= error_tag f, :region %>
+
+  <%= label f, :zip_code %>
+  <%= text_input f, :zip_code %>
+  <%= error_tag f, :zip_code %> 
+
+  <div>
+    <%= submit "Register" %>
+  </div>
+<% end %>
+
+
+<span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>

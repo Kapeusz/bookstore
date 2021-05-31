@@ -9,7 +9,13 @@
 
     <th></th>
   </tr>
-<%= pagination_links @page, order_by: @order_by, query: @query, next: "Next", previous: "Prev" %></thead>
+</thead>
+<%= pagination_links @page, order_by: @order_by, query: @query, previous: ~E(<i class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+</svg></i>), next: ~E(<i class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+</svg></i>) %>
+<!-- <%= pagination_links @page, order_by: @order_by, query: @query, view_style: :foundation %> -->
 </form>
 <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-10 gap-y-10 p-6 ">
   <%= for book <- @books do %>

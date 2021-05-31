@@ -16,6 +16,12 @@ config :bookstore, BookstoreWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :bookstore, Bookstore.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: "X.X.X."
+
+
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

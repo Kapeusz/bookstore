@@ -33,8 +33,8 @@ config :waffle,
   virtual_host: true
 
 config :ex_aws,
-  access_key_id: "X.X.X",
-  secret_access_key: "X.X.X",
+  access_key_id: "X.X.X.",
+  secret_access_key: "X.X.X.",
   region: "eu-central-1",
   s3: [
     scheme: "https://",
@@ -44,6 +44,20 @@ config :ex_aws,
 
 config :scrivener_html,
   routes_helper: Bookstore.Router.Helpers
+
+config(:bookstore, :pow,
+  user: Bookstore.Users.User,
+  repo: Bookstore.Repo,
+  web_module: BookstoreWeb,
+  extensions: [PowEmailConfirmation, PowResetPassword, PowPersistentSession],
+  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
+  mailer_backend: BookstoreWeb.Pow.Mailer,
+  messages_backend: BookstoreWeb.Pow.Messages
+)
+
+config :bookstore, Bookstore.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: "X.X.X."
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

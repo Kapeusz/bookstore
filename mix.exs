@@ -53,7 +53,10 @@ defmodule Bookstore.MixProject do
       {:waffle_ecto, "~> 0.0.9"},
       {:slugify, "~> 1.3"},
       {:scrivener_ecto, "~> 2.0"},
-      {:scrivener_html, "~> 1.8"}
+      {:scrivener_html, "~> 1.8"},
+      {:pow, "1.0.18"},
+      {:bamboo, "~> 2.1.0"},
+      {:swoosh, "~> 1.0"}
     ]
   end
 
