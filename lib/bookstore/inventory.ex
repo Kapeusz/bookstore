@@ -63,7 +63,6 @@ defmodule Bookstore.Inventory do
       Repo.get_by!(Book, slug: slug)
       |> Repo.preload(:category)
       |> Repo.preload(:author)
-
   @doc """
   Creates a book.
 

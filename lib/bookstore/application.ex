@@ -14,7 +14,8 @@ defmodule Bookstore.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Bookstore.PubSub},
       # Start the Endpoint (http/https)
-      BookstoreWeb.Endpoint
+      BookstoreWeb.Endpoint,
+      Bookstore.Workers.CartAgent
       # Start a worker by calling: Bookstore.Worker.start_link(arg)
       # {Bookstore.Worker, arg}
     ]

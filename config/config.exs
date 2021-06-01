@@ -33,8 +33,8 @@ config :waffle,
   virtual_host: true
 
 config :ex_aws,
-  access_key_id: "AKIAXLG7TBF2HP5QS5CU",
-  secret_access_key: "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",
+  access_key_id: "X.X.X.",
+  secret_access_key: "X.X.X.",
   region: "eu-central-1",
   s3: [
     scheme: "https://",
@@ -54,6 +54,7 @@ config(:bookstore, :pow,
   mailer_backend: BookstoreWeb.Pow.Mailer,
   messages_backend: BookstoreWeb.Pow.Messages
 )
+
 # Mailer for email confirmation/reset password
 config :bookstore, Bookstore.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
@@ -66,6 +67,7 @@ config :bookstore, Bookstore.ContactMailer,
   hackney_opts: [
     recv_timeout: :timer.minutes(1)
   ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

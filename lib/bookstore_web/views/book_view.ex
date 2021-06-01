@@ -1,5 +1,6 @@
 defmodule BookstoreWeb.BookView do
   use BookstoreWeb, :view
+
   import BookstoreWeb.ViewHelpers
   import Scrivener.HTML
   alias BookstoreWeb.Uploaders.ImageUploader
@@ -8,6 +9,7 @@ defmodule BookstoreWeb.BookView do
   alias Bookstore.Media
   alias Bookstore.Media.Publisher
   alias BookstoreWeb.ViewHelpers
+  alias Bookstore.Workers.CartAgent
 
   def category_select_options(categories) do
     for category <- categories, do: {category.name, category.id}
@@ -36,5 +38,29 @@ defmodule BookstoreWeb.BookView do
     [first_name, last_name]
     |> Enum.reject(&(&1 == ""))
     |> Enum.join(" ")
+  end
+
+  def cart_link(conn, current_user, book) do
+    if in_cart?(current_user.email, book.slug) do
+      link("Remove from cart", to: Routes.cart_path(conn, :delete, book.slug), method: :delete)
+    else
+      link("Add to cart", to: Routes.cart_path(conn, :update, book.slug), method: :put)
+    end
+  end
+
+  defp in_cart?(username, book_slug) do
+    username
+    |> existing_ids()
+    |> Enum.member?(book_slug)
+  end
+
+  defp existing_ids(email) do
+    case CartAgent.get_cart(email) do
+      nil ->
+        []
+
+      cart ->
+        Enum.map(cart, & &1.slug)
+    end
   end
 end
