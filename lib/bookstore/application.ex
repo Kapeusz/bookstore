@@ -15,7 +15,9 @@ defmodule Bookstore.Application do
       {Phoenix.PubSub, name: Bookstore.PubSub},
       # Start the Endpoint (http/https)
       BookstoreWeb.Endpoint,
-      Bookstore.Workers.CartAgent
+      Bookstore.Workers.CartSupervisor,
+      {Registry, [keys: :unique, name: :cart_registry]}
+      # Bookstore.Workers.CartAgent
       # Start a worker by calling: Bookstore.Worker.start_link(arg)
       # {Bookstore.Worker, arg}
     ]

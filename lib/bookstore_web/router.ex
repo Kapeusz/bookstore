@@ -49,6 +49,9 @@ defmodule BookstoreWeb.Router do
     get("/author/:name", AuthorController, :show_author_books)
     resources("/contact", ContactController, only: [:index, :create])
     resources("/cart", CartController, only: [:update, :delete])
+    get("/cart", CartController, :index)
+    delete("/cart", CartController, :index)
+    patch("/cart", CartController, :update)
   end
 
   # Other scopes may use custom stacks.

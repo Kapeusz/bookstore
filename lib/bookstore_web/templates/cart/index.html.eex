@@ -1,0 +1,13 @@
+<h1>Your Cart</h1>
+<%= if @books do %>
+  <ul>
+    <%= for book <- @books do %>
+      <li>
+        <%= book.title %> by <%= full_name(@book.author) %>
+        <% link "X", to: Routes.cart_path(@conn, :delete, book_id: book.id), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No books in your cart</p>
+<% end %>

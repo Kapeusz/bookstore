@@ -9,7 +9,7 @@ defmodule BookstoreWeb.BookView do
   alias Bookstore.Media
   alias Bookstore.Media.Publisher
   alias BookstoreWeb.ViewHelpers
-  alias Bookstore.Workers.CartAgent
+  alias Bookstore.Carts
 
   def category_select_options(categories) do
     for category <- categories, do: {category.name, category.id}
@@ -42,20 +42,26 @@ defmodule BookstoreWeb.BookView do
 
   def cart_link(conn, current_user, book) do
     if in_cart?(current_user.email, book.slug) do
-      link("Remove from cart", to: Routes.cart_path(conn, :delete, book.slug), method: :delete)
+      link("Remove from cart",
+        to: Routes.cart_path(conn, :delete, book.slug),
+        method: :delete
+      )
     else
-      link("Add to cart", to: Routes.cart_path(conn, :update, book.slug), method: :put)
+      link("Add to cart",
+        to: Routes.cart_path(conn, :update, book.slug),
+        method: :patch
+      )
     end
   end
 
-  defp in_cart?(username, book_slug) do
-    username
+  defp in_cart?(email, book_slug) do
+    email
     |> existing_ids()
     |> Enum.member?(book_slug)
   end
 
   defp existing_ids(email) do
-    case CartAgent.get_cart(email) do
+    case Carts.get(email) do
       nil ->
         []
 

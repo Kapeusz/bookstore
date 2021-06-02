@@ -63,11 +63,13 @@ config :bookstore, Bookstore.Mailer,
 # Mailer for contact form
 config :bookstore, Bookstore.ContactMailer,
   adapter: Bamboo.SendGridAdapter,
-  api_key: "X.X.X.",
+  api_key: "X.X.X.,
   hackney_opts: [
     recv_timeout: :timer.minutes(1)
   ]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env()}.exs"
+import_config "
+
+# {Mix.env()}.exs"
