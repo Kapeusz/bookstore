@@ -48,9 +48,9 @@ defmodule BookstoreWeb.Router do
     get("/category/:name", CategoryController, :show_category_books)
     get("/author/:name", AuthorController, :show_author_books)
     resources("/contact", ContactController, only: [:index, :create])
-    resources("/cart", CartController, only: [:update, :delete])
+    resources("/cart", CartController, only: [:update])
     get("/cart", CartController, :index)
-    delete("/cart", CartController, :index)
+    delete("/cart", CartController, :delete)
     patch("/cart", CartController, :update)
   end
 

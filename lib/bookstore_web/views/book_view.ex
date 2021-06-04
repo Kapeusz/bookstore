@@ -42,10 +42,7 @@ defmodule BookstoreWeb.BookView do
 
   def cart_link(conn, current_user, book) do
     if in_cart?(current_user.email, book.slug) do
-      link("Remove from cart",
-        to: Routes.cart_path(conn, :delete, book.slug),
-        method: :delete
-      )
+      nil
     else
       link("Add to cart",
         to: Routes.cart_path(conn, :update, book.slug),

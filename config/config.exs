@@ -13,7 +13,7 @@ config :bookstore,
 # Configures the endpoint
 config :bookstore, BookstoreWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "NSDQtTSguG4Z2cxT+W6fF9StofkhKNJHaHmT58PEsQDfMM5iOXwMS7gnO9TRDJjT",
+  secret_key_base: "X.X.X.",
   render_errors: [view: BookstoreWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Bookstore.PubSub,
   live_view: [signing_salt: "uIk2UMXS"]
@@ -63,13 +63,11 @@ config :bookstore, Bookstore.Mailer,
 # Mailer for contact form
 config :bookstore, Bookstore.ContactMailer,
   adapter: Bamboo.SendGridAdapter,
-  api_key: "X.X.X.,
+  api_key: "X.X.X.",
   hackney_opts: [
     recv_timeout: :timer.minutes(1)
   ]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "
-
-# {Mix.env()}.exs"
+import_config "#{Mix.env()}.exs"

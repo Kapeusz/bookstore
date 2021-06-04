@@ -1,14 +1,8 @@
 defmodule Bookstore.Workers.CartAgent do
   use Agent
 
-  def start_link(state, cart_id) do
+  def start_link({state, cart_id}) do
     Agent.start_link(fn -> state end, name: via_tuple(cart_id))
-  end
-
-  def add_item(cart_id, item) do
-    Agent.cast(via_tuple(cart_id), fn state ->
-      state ++ [item]
-    end)
   end
 
   def delete_item(cart_id, item_id) do
@@ -21,6 +15,12 @@ defmodule Bookstore.Workers.CartAgent do
 
     Agent.update(via_tuple(cart_id), fn _state ->
       updated_cart
+    end)
+  end
+
+  def add_item(cart_id, item) do
+    Agent.cast(via_tuple(cart_id), fn state ->
+      state ++ [item]
     end)
   end
 

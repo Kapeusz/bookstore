@@ -17,13 +17,13 @@ defmodule Bookstore.Carts do
     end
   end
 
+  def remove(cart_id, item) do
+    CartAgent.delete_item(cart_id, item)
+  end
+
   defp cart_exists?(cart_id) do
     :cart_registry
     |> Registry.lookup(cart_id)
     |> Enum.any?()
-  end
-
-  def remove(cart_id, item) do
-    CartAgent.delete_item(cart_id, item)
   end
 end

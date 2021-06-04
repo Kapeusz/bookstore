@@ -3,8 +3,8 @@
   <ul>
     <%= for book <- @books do %>
       <li>
-        <%= book.title %> by <%= full_name(@book.author) %>
-        <% link "X", to: Routes.cart_path(@conn, :delete, book_id: book.id), method: :delete %>
+        <%= book.title %>: £<%= book.original_price %>
+        <%= link "X", to: Routes.cart_path(@conn, :delete, book_slug: book.slug), method: :delete %>
       </li>
     <% end %>
   </ul>

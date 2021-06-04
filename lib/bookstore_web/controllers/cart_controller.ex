@@ -14,11 +14,11 @@ defmodule BookstoreWeb.CartController do
     Carts.add(current_user.email, book)
 
     conn
-    |> put_flash(:info, "Book added to your cart.")
+    |> put_flash(:info, "Book added to your cart")
     |> redirect(to: Routes.book_path(conn, :show, book))
   end
 
-  def delete(%{assigns: %{current_user: current_user}} = conn, %{"id" => id}) do
+  def delete(%{assigns: %{current_user: current_user}} = conn, %{"book_slug" => id}) do
     book = Inventory.get_book!(id)
     Carts.remove(current_user.email, book.id)
 

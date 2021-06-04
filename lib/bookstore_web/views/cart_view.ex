@@ -9,10 +9,6 @@ defmodule BookstoreWeb.CartView do
   alias Bookstore.Media.Publisher
   alias BookstoreWeb.ViewHelpers
   alias Bookstore.Carts
-
-  def full_name(%Writers.Author{first_name: first_name, last_name: last_name}) do
-    [first_name, last_name]
-    |> Enum.reject(&(&1 == ""))
-    |> Enum.join(" ")
-  end
+  alias Bookstore.Inventory
+  alias Bookstore.Inventory.Books
 end
