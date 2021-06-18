@@ -11,4 +11,16 @@ defmodule BookstoreWeb.CartView do
   alias Bookstore.Carts
   alias Bookstore.Inventory
   alias Bookstore.Inventory.Books
+
+  def total_price(books) do
+    shipping = 5.99
+
+    price_with_shipping =
+      Enum.reduce(books, 0, fn %{original_price: price}, acc ->
+        price + acc
+      end)
+
+    total_amount = price_with_shipping + shipping
+    "Total amount: £#{total_amount}"
+  end
 end

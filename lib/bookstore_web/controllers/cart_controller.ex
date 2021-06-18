@@ -3,6 +3,7 @@ defmodule BookstoreWeb.CartController do
 
   alias Bookstore.{Carts, Inventory}
   alias Bookstore.Workers.CartAgent
+  alias Bookstore.Carts.Cart
 
   def index(%{assigns: %{current_user: current_user}} = conn, _params) do
     books = Carts.get(current_user.email)

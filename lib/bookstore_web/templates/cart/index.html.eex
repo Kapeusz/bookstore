@@ -1,13 +1,18 @@
 <h1>Your Cart</h1>
-<%= if @books do %>
-  <ul>
-    <%= for book <- @books do %>
-      <li>
-        <%= book.title %>: £<%= book.original_price %>
-        <%= link "X", to: Routes.cart_path(@conn, :delete, book_slug: book.slug), method: :delete %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No books in your cart</p>
-<% end %>
+  <%= if @books do %>
+    <ul>
+      <%= for book <- @books do %>
+        <li>
+          <%= book.title %>: £<%= book.original_price %>
+          <%= link "X", to: Routes.cart_path(@conn, :delete, book_slug: book.slug), method: :delete %>
+        </li>
+      <% end %>
+      Shipping cost: £5.99 </br>
+      <%= total_price(@books) %></br>
+      <%= link "Confirm order", to: order_path(@conn, :new, @books), class: "btn btn-primary pull-right " %>
+  <% end %>
+    </ul>
+
+  
+
+

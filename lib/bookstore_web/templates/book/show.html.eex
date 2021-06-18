@@ -63,6 +63,6 @@
     <div class="text-sm py-2"><%= link "More books from this author", to: Routes.author_path(@conn, :show_author_books, @book.author.slug) %></div>
   </div>
   <%= if @conn.assigns[:current_user] do %>
-  <%= cart_link(@conn, @current_user, @book) %>
-<% end %>
+    <%= cart_link(@conn, @current_user, @book) %>
+  <% end %>
 </div>

@@ -13,7 +13,7 @@ config :bookstore,
 # Configures the endpoint
 config :bookstore, BookstoreWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "X.X.X.",
+  secret_key_base: "NSDQtTSguG4Z2cxT+W6fF9StofkhKNJHaHmT58PEsQDfMM5iOXwMS7gnO9TRDJjT",
   render_errors: [view: BookstoreWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Bookstore.PubSub,
   live_view: [signing_salt: "uIk2UMXS"]
