@@ -1,20 +1,82 @@
 # Bookstore
 
-To start your Phoenix server:
+Bookstore is a web application being under development for learning purposes.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+## Use cases
+Main goal I wanted to achieve was to create an easy to use application for bookstore owner.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Use cases covered:
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+* Customer can browse all books
+* Customer can search for a book and order searching results
+* Users can create an account
+* To log in, the user must have confirmed account
+* To confirm account user must click on the confirmation link sent to the given email address
+* Customer can update personal information
+* Administrator can add/edit/delete a book
+* Administrator can upload an image for a book (images being uploaded to Amazon AWS S3)
+* Customer can add multiple books to cart
+* Customer can contact the administrator by sending a message using the contact form
 
-## Learn more
+Use cases to cover:
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+* Create checkout
+* Create Admin Dashboard
+* Let user add review/comment for a bought book
+* Write appropriate tests
+## Tech stack
+
+* Elixir
+* Phoenix Framework
+* Ecto
+* PostgreSql
+* TailwindCSS
+* AlpineJS
+
+## App presentation
+
+I will add app images/gifs when the app will be in the final stage of development.
+
+## Running app
+
+To run this app you have to download repository and run: 
+
+
+```elixir
+# install dependencies
+mix deps.get
+
+# create and migrate your database
+mix ecto.setup
+
+# install Node.js dependencies
+cd assets && npm install
+
+# start Phoenix endpoint
+mix phx.server
+```
+Now you can visit localhost:4000 from your browser.
+
+To use all currently developed features you should get API keys for Amazon AWS S3 and Sendgrid. 
+
+Fill in config.exs
+
+```
+access_key_id: 
+secret_access_key: 
+```
+
+and appropriate region details. 
+
+Also:
+```
+api_key: 
+```
+
+## Authors
+
+* Kacper Muryn
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
